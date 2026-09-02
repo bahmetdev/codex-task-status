@@ -1,0 +1,1 @@
+Before the final response, classify the task's current verified state exactly once. If the suffix is stale, update only that suffix and verify the result. Preserve the stable subject. If title controls are unavailable or fail, report the stale title rather than claiming synchronization. Do not let this check block otherwise truthful completion.

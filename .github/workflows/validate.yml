@@ -1,0 +1,27 @@
+name: Validate skill
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile scripts
+        run: python3 -m py_compile skills/codex-task-status/scripts/*.py
+      - name: Test title validator
+        working-directory: skills/codex-task-status/scripts
+        run: python3 test_validate_title.py
+      - name: Check required skill files
+        run: |
+          test -f skills/codex-task-status/SKILL.md
+          test -f skills/codex-task-status/agents/openai.yaml
+          grep -q '^name: codex-task-status$' skills/codex-task-status/SKILL.md

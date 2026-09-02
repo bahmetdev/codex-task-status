@@ -1,0 +1,19 @@
+{
+  "title_pattern": "^(?P<subject>[^\\s()]+) \\((?P<status>[^()]+)\\)$",
+  "states": [
+    "work",
+    "qa",
+    "feedback",
+    "approval",
+    "blocked",
+    "paused",
+    "committing",
+    "committed",
+    "pushing",
+    "pushed",
+    "done",
+    "attention"
+  ],
+  "schedule_pattern": "^(?:(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)·)?(?:[01]\\d|2[0-3]):[0-5]\\d(?:·(?:[01]\\d|2[0-3]):[0-5]\\d)*$",
+  "case_sensitive": true
+}
