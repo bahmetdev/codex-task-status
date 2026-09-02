@@ -18,6 +18,7 @@ Use the text from `assets/prompts/closeout-check.md` in the persistent instructi
 
 - Never parse the user's latest verb and write a status automatically.
 - Never run a background renamer that races with the active task.
+- Reminders must preserve the latest user-chosen subject, not the initial or cached name. Require a fresh live-title read before a suffix write; never enforce one-word or language defaults on a manual rename.
 - Never block completion solely because title controls are unavailable.
 - Never install or edit global hook configuration without explicit user authorization.
 - Preserve an existing hook chain and ordering when the user authorizes integration.

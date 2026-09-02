@@ -18,3 +18,8 @@ Use these cases when editing the instructions. They are a review rubric, not a c
 | The user says thanks or asks for status. | Do not rename merely because another message arrived. |
 | Title controls are unavailable. | Propose the exact title; do not claim a rename. |
 | Custom labels were approved earlier. | Reuse their saved meanings; do not repeat onboarding. |
+| The user changes `Crop (qa)` to `Photo Tools (qa)` in the UI, then requests a fix. | Read the live title and use `Photo Tools (work)`, never `Crop (work)`. |
+| The user requests the subject `Мої фото` while the task is `qa`. | Use `Мої фото (qa)`; neither shorten/translate the name nor change the work state. |
+| The live title is `Notes (Personal)` with no recognized workflow suffix. | Preserve the whole subject, for example `Notes (Personal) (work)`. |
+| A manual title fails the default one-word validator. | Preserve the user's name; do not normalize it just to pass validation. |
+| No fresh live title is available before a suffix write. | Skip the write and report the limitation; do not restore a remembered subject. |

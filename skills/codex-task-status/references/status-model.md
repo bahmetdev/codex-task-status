@@ -2,7 +2,7 @@
 
 The recommended title is `<Subject> (<state>)`.
 
-`Subject` is one stable, concrete noun in the user's preferred language. A one-word subject is the recommended default because it scans well in a narrow sidebar. Users may configure phrases when their work requires them.
+`Subject` is one stable, concrete noun in the user's preferred language. A one-word subject is the recommended default because it scans well in a narrow sidebar. Users may configure phrases when their work requires them. A manual UI rename or explicit rename request also overrides the initial subject and defaults for that task, without requiring global reconfiguration. Preserve the exact chosen name, including spaces, language, and punctuation. Before every suffix update, reread the live title; never restore a cached subject. Change only a recognized trailing workflow suffix, not other parenthetical text. A subject-only rename leaves the work state unchanged.
 
 ## Working states
 

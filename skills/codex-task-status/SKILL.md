@@ -20,14 +20,14 @@ For persistent use, propose the small opt-in `assets/agents-snippet.md` for the 
 
 ## Operate the Workflow
 
-1. Resolve the task's stable subject when its primary scope first becomes clear.
+1. Generate a subject only when no user-chosen title exists. A user's UI rename or explicit rename request becomes the new canonical subject, overriding the initial name and default word count/language. Preserve the user's exact wording; do not revert or normalize it.
 2. Classify the current state from evidence, not from the latest verb in the user's message.
-3. Change only the suffix when a meaningful transition occurs. Keep the subject stable for later prompts, subtasks, QA, Git actions, and closeout.
+3. Before each title write, read the current live title and preserve its subject, not a cached name. Replace only a recognized trailing status/schedule; keep other parenthetical text. If no suffix is recognized, retain the full title as the subject. If the live title cannot be read, skip the write rather than overwrite a user rename. A subject-only rename does not change the work state.
 4. Use the available task-title control to apply the title. If no title control exists, propose the exact title instead of claiming it changed.
 5. Verify the resulting title when a title control can read it back.
 6. Before finalizing non-trivial work, classify once more and correct a stale suffix.
 
-Do not rename after every message, tool call, test, build, wait, or routine status update. If the primary subject genuinely changes, recommend a separate task rather than stretching the old subject.
+Do not rename after every message, tool call, test, build, wait, or routine status update. For agent-detected scope drift, recommend a separate task rather than autonomously renaming it; this does not restrict the user's choice to rename the current task.
 
 ## Apply Evidence Rules
 
@@ -52,7 +52,7 @@ python3 scripts/validate_title.py "Crop (work)"
 python3 scripts/validate_title.py --config path/to/task-status.json "Release (pushed)"
 ```
 
-The validator checks syntax and configured vocabulary only. It cannot prove that a semantic state is truthful.
+The validator checks syntax and configured vocabulary only. It cannot prove that a semantic state is truthful. A user's manual name may intentionally fail the default one-word pattern; preserve that title and adapt the task-specific validation policy if needed, never rename it to satisfy the validator.
 
 ## Add Optional Automation Safely
 
