@@ -12,7 +12,8 @@ The workflow makes a busy task sidebar easier to scan while keeping important di
 
 ## Design principles
 
-- One stable subject; only the status suffix changes.
+- Initialize the subject once during the first substantive turn, including consultation; afterward only the status suffix changes automatically.
+- Preserve explicit user names and later manual renames, including custom wording or multiple words.
 - Evidence-backed transitions, not keyword guessing.
 - Recommended defaults with full language and vocabulary customization.
 - No rename on every prompt, tool call, build, or wait.
