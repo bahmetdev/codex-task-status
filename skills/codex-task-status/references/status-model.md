@@ -6,6 +6,13 @@ The recommended title is `<Subject> (<state>)`.
 
 ## Working states
 
+Initialize the subject and truthful state once during the first substantive turn,
+including consultation. The app's automatic title is not evidence of a user
+choice; an explicit name or evidenced UI rename is. After initialization, use
+suffix-only transitions and preserve user renames. Resume, restart, compaction,
+and later prompts do not restart naming. Preserve established titles when
+their origin is uncertain; never infer ownership from wording alone.
+
 | State | Use when | Do not use when |
 | --- | --- | --- |
 | `work` | Implementation, investigation, revision, or required agent-side validation is active. | The result is genuinely ready for user acceptance. |

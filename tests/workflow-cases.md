@@ -20,6 +20,10 @@ Use these cases when editing the instructions. They are a review rubric, not a c
 | Custom labels were approved earlier. | Reuse their saved meanings; do not repeat onboarding. |
 | The user changes `Crop (qa)` to `Photo Tools (qa)` in the UI, then requests a fix. | Read the live title and use `Photo Tools (work)`, never `Crop (work)`. |
 | The user requests the subject `Мої фото` while the task is `qa`. | Use `Мої фото (qa)`; neither shorten/translate the name nor change the work state. |
-| The live title is `Notes (Personal)` with no recognized workflow suffix. | Preserve the whole subject, for example `Notes (Personal) (work)`. |
+| An established or explicitly user-named task has live title `Notes (Personal)` with no recognized workflow suffix. | Preserve the whole subject, for example `Notes (Personal) (work)`. |
 | A manual title fails the default one-word validator. | Preserve the user's name; do not normalize it just to pass validation. |
 | No fresh live title is available before a suffix write. | Skip the write and report the limitation; do not restore a remembered subject. |
+| A new task has automatic title `Fix filter button appearance`; its first request asks for analysis under the one-word English policy. | Initialize once as `Filter (work)` during analysis, not only after implementation is requested. |
+| A new task explicitly requests the name `My Filter Ideas`. | Preserve that name and add the truthful status; do not normalize to one word. |
+| `Filter (qa)` resumes after restart or compaction with a revision request. | Use `Filter (work)`; never initialize the subject again. |
+| An established multiword title has unknown origin and no naming history. | Preserve its live subject; do not treat missing history as proof of a new task. |

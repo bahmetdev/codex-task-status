@@ -6,6 +6,11 @@ The [current Codex hook reference](https://learn.chatgpt.com/docs/hooks) support
 
 ## Start check
 
+Distinguish one-time initial naming from later suffix updates. A new task's
+first substantive consultation also qualifies; do not wait for implementation.
+Existing app-generated text is not proof of user naming. Preserve explicit
+names and evidenced UI renames, and never reinitialize an established task.
+
 Use the text from `assets/prompts/start-check.md` in the persistent instructions. An explicitly requested command-hook adapter may provide that reminder through `UserPromptSubmit` additional context. The active task, not the hook, decides whether the turn is substantive and whether its suffix is stale.
 
 Do not trigger this check for acknowledgements, thanks, status-only questions, routine heartbeat runs, or messages that require no new work.

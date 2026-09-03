@@ -20,9 +20,9 @@ For persistent use, propose the small opt-in `assets/agents-snippet.md` for the 
 
 ## Operate the Workflow
 
-1. Generate a subject only when no user-chosen title exists. A user's UI rename or explicit rename request becomes the new canonical subject, overriding the initial name and default word count/language. Preserve the user's exact wording; do not revert or normalize it.
+1. Initialize a new task's title exactly once at its first substantive turn, including analysis or consultation, once the subject is clear. Read the live title and apply the approved subject format plus truthful state; do not wait for implementation. An automatic app-generated title is not a user choice merely because it exists. Preserve an explicit naming request or evidenced UI rename. After verified initialization, later prompts, resume, restart, compaction, and scope drift change only the status; user renames become the new canonical subject. Use existing task history, not a new registry. For an established task with uncertain naming history, preserve its live subject rather than reinitialize it.
 2. Classify the current state from evidence, not from the latest verb in the user's message.
-3. Before each title write, read the current live title and preserve its subject, not a cached name. Replace only a recognized trailing status/schedule; keep other parenthetical text. If no suffix is recognized, retain the full title as the subject. If the live title cannot be read, skip the write rather than overwrite a user rename. A subject-only rename does not change the work state.
+3. After initialization, read the current live title before each suffix update and preserve its subject, not a cached name. Replace only a recognized trailing status/schedule; keep other parenthetical text. If no suffix is recognized, retain the full title as the subject. If the live title cannot be read, skip any title write, including initialization, rather than overwrite a user rename. A subject-only rename does not change the work state.
 4. Use the available task-title control to apply the title. If no title control exists, propose the exact title instead of claiming it changed.
 5. Verify the resulting title when a title control can read it back.
 6. Before finalizing non-trivial work, classify once more and correct a stale suffix.
