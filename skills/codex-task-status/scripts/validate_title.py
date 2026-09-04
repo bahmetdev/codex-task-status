@@ -35,7 +35,7 @@ def load_config(path: Path | None) -> dict[str, Any]:
     if path is not None:
         try:
             loaded = json.loads(path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError) as exc:
+        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
             raise ConfigError(f"cannot read config: {exc}") from exc
         if not isinstance(loaded, dict):
             raise ConfigError("config root must be a JSON object")
@@ -45,6 +45,9 @@ def load_config(path: Path | None) -> dict[str, Any]:
 
 
 def validate_config(config: dict[str, Any]) -> None:
+    unknown = set(config) - set(DEFAULT_CONFIG)
+    if unknown:
+        raise ConfigError("unknown config keys: " + ", ".join(sorted(unknown)))
     pattern = config.get("title_pattern")
     states = config.get("states")
     schedule_pattern = config.get("schedule_pattern")

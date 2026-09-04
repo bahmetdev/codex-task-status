@@ -10,10 +10,17 @@ Use these cases when editing the instructions. They are a review rubric, not a c
 | The correct crop behavior depends on the user's aspect-ratio choice. | Use `feedback`. |
 | Exact deletion targets are known but need permission. | Use `approval`, not `feedback`. |
 | User asks to commit an accepted scope; no new commit exists yet. | Use `committing`, not `committed`. |
-| The matching local commit is verified, but remote state is not. | Use `committed`. |
+| The matching local commit is verified; publication is not required and no work or gate remains. | Use `committed`. |
 | A push is running. | Use `pushing`, not `pushed`. |
-| The matching remote commit is verified and acceptance is complete. | Use `pushed`; do not imply CI or deployment. |
+| The matching remote commit is verified; no required work or acceptance gate remains. | Use `pushed`; do not imply CI or deployment. |
 | A non-Git task is fully complete with no remaining gate. | Use `done`. |
+| A read-only repository audit or requested local edit is complete; no commit or acceptance is required. | Use `done`; report any relevant uncommitted scope honestly. |
+| A complete answer could be reviewed by the user, but acceptance was not requested or required. | Use `done`; do not create a QA gate. |
+| Push succeeded, but required deployment or CI verification remains agent-owned. | Use `work`; report the verified push separately. |
+| Push succeeded, but a failed external deployment service prevents meaningful progress. | Use `blocked`, not `pushed`. |
+| Deployment was already authorized for this exact scope and can proceed. | Continue `work`; do not request authorization again. |
+| User asks only to push an already verified matching commit. | Enter `pushing` directly, then verify the remote before `pushed`. |
+| A recurring automation awaits required user input or authorization. | Use `attention`; restore its existing verified schedule when resolved. |
 | A routine automation run has no intervention. | Keep the verified schedule title. |
 | The user says thanks or asks for status. | Do not rename merely because another message arrived. |
 | Title controls are unavailable. | Propose the exact title; do not claim a rename. |

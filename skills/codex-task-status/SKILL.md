@@ -16,7 +16,7 @@ First reuse an existing user-approved naming policy; do not repeat onboarding on
 
 Do not brand either path with a person's name. Do not call one path “minimal.” Treat the recommended structure as a useful default, not a mandatory standard.
 
-For persistent use, propose the small opt-in `assets/agents-snippet.md` for the user's chosen project or global instructions. Save custom label meanings and transitions there or in a linked policy file, not only in conversation memory. Installing this skill alone does not guarantee invocation on every turn. Confirm scope before editing instructions; do not modify other tasks or archived titles unless explicitly requested.
+For persistent use, propose the small opt-in `assets/agents-snippet.md` for the user's chosen project or global instructions. Save custom label meanings and transitions there or in a linked policy file, not only in conversation memory. Installing this skill alone does not guarantee invocation on every turn. Reuse the scope and authorization already provided; clarify only missing scope before editing instructions; do not modify other tasks or archived titles unless explicitly requested.
 
 ## Operate the Workflow
 
@@ -32,12 +32,12 @@ Do not rename after every message, tool call, test, build, wait, or routine stat
 ## Apply Evidence Rules
 
 - `work` means implementation, investigation, or required agent-side validation is active.
-- `qa` means the result is ready for user acceptance; it does not mean internal tests are merely running.
+- `qa` means agent work is complete and user acceptance is a requested or required next gate. Do not invent an acceptance step for an otherwise completed request; internal tests remain `work`.
 - `feedback` means the correct next action depends on missing user input.
-- `approval` means the intended action is known but explicit authorization is required.
+- `approval` means the intended action is known but required authorization is still missing. Reuse authorization already given for the same scope.
 - `blocked` is a real non-user-input blocker; `paused` is intentional deferral.
 - `committing` and `pushing` are in-progress states. Use `committed` or `pushed` only after verifying the matching Git result.
-- A commit or push does not imply QA acceptance, CI, deployment, or delivery.
+- Required remaining work or a gate takes precedence over a verified Git milestone: use `work` while agent checks or deployment continue, or the applicable waiting state. `committed` and `pushed` are closeout states only when no required work or gate remains; they do not imply CI, deployment, or delivery.
 - Use `done` for completed work when a commit or publication is neither requested nor required and no acceptance or other action remains. This includes read-only repository audits and scoped local work; it does not claim a commit or push. Preserve the user's approved naming policy over these defaults.
 - A later relevant change returns a terminal Git or completion state to `work`.
 

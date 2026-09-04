@@ -16,9 +16,9 @@ their origin is uncertain; never infer ownership from wording alone.
 | State | Use when | Do not use when |
 | --- | --- | --- |
 | `work` | Implementation, investigation, revision, or required agent-side validation is active. | The result is genuinely ready for user acceptance. |
-| `qa` | The user can now accept or reject the result. | Internal tests/builds are still incomplete or the agent still owns required verification. |
+| `qa` | Agent work is complete and user acceptance is a requested or required next gate. | Internal checks remain, or the request is complete without a user acceptance requirement. |
 | `feedback` | Correct work depends on a missing decision, clarification, material, or visual judgment. | The action is already known and only permission is missing. |
-| `approval` | A known destructive, risky, external, production, account, purchase, or otherwise gated action needs explicit authorization. | Routine QA acceptance or ordinary clarification. |
+| `approval` | A known action requires authorization that has not yet been granted for this scope. | Authorization already exists, routine QA acceptance, or ordinary clarification. |
 | `blocked` | A real non-user-input condition prevents meaningful progress. | Work can continue independently or the task only awaits the user. |
 | `paused` | The task was intentionally deferred. | A process happens to be idle. |
 
@@ -33,9 +33,11 @@ their origin is uncertain; never infer ownership from wording alone.
 
 Do not jump directly from `work` to `committed` before the commit succeeds, or from `committed` to `pushed` before remote verification. Git states do not prove QA, CI, deployment, release, or delivery.
 
-If user acceptance is the active gate, `qa` remains the truthful visible state even when a commit already exists. When the user then explicitly requests the accepted work to be committed, transition through `committing` to `committed`.
+Remaining required work or a gate takes precedence over Git milestones. After a successful push, use `work` while required CI checks, deployment, or delivery remain agent-owned; use the applicable waiting state if progress is gated. A failed external dependency that prevents progress is `blocked`, even if the push succeeded. Report verified Git milestones separately.
 
-## Non-Git completion
+If user acceptance is the active gate, keep `qa` even after a commit or push. Do not create that gate merely because the user could review the result. When an authorized Git-only phase begins, use `committing` or `pushing` directly; existing scope authorization is sufficient. Use `committed` or `pushed` for closeout only when no required work or gate remains.
+
+## Completion without a required Git phase
 
 Use `done` when a commit or publication is neither requested nor required and no QA, feedback, approval, blocker, pause, or user action remains. Examples include completed Mail, calendar, research, communication, read-only repository audits, and scoped local work whose outcome does not require a commit. This state does not claim Git publication. An existing user-approved naming policy takes precedence over these defaults.
 
@@ -47,11 +49,11 @@ For a healthy recurring task, a verified schedule may replace the state, for exa
 - `News (10:00·19:00)`
 - `Skills (Sun·09:00)`
 
-During routine runs, keep the schedule stable. Temporarily use `attention`, `blocked`, or `paused` only when the automation genuinely needs intervention, then restore the verified schedule.
+During routine runs, keep the schedule stable. Use `attention` when user input or authorization is required, `blocked` for an external non-user-input blocker, and `paused` for intentional suspension. After resolution, restore the verified schedule from the existing automation. Never infer a schedule from an old title or create or change scheduling just to repair its suffix.
 
 ## Transition rules
 
-- A substantive new or resumed request normally moves a stale terminal state back to `work`.
+- A substantive new or resumed request normally moves a stale terminal state back to `work`; an authorized commit-only or push-only request enters its corresponding in-progress Git state.
 - A reported defect or requested revision moves `qa` back to `work`.
 - `feedback` resolves to `work` once the missing input arrives.
 - `approval` resolves to `work` when authorization arrives and execution begins.

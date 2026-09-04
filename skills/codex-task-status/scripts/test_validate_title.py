@@ -61,6 +61,28 @@ class ValidateTitleTests(unittest.TestCase):
         valid, _ = validate_title("Меню кадрування [робота]", config)
         self.assertTrue(valid)
 
+    def test_unknown_config_key_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "config.json"
+            path.write_text(json.dumps({"schedule_patterns": None}), encoding="utf-8")
+            with self.assertRaisesRegex(ConfigError, "schedule_patterns"):
+                load_config(path)
+
+    def test_invalid_config_encoding_is_config_error(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "config.json"
+            path.write_bytes(b"\xff")
+            with self.assertRaises(ConfigError):
+                load_config(path)
+
+    def test_partial_config_can_disable_schedules(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "config.json"
+            path.write_text(json.dumps({"schedule_pattern": None}), encoding="utf-8")
+            config = load_config(path)
+        self.assertTrue(validate_title("News (work)", config)[0])
+        self.assertFalse(validate_title("News (09:00)", config)[0])
+
     def test_requires_named_groups(self) -> None:
         custom = {
             "title_pattern": r"^.+$",

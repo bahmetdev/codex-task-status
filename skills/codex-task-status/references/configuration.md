@@ -40,6 +40,7 @@ Requirements:
 
 - `title_pattern` must be a valid regular expression with named groups `subject` and `status`.
 - `states` must be a non-empty list of unique non-empty strings.
+- Unknown keys are rejected so misspelled settings cannot silently fall back to defaults.
 - Omitted keys inherit the recommended defaults. Set `schedule_pattern` to `null` to disable schedule suffixes; when a pattern is present, a matching suffix is accepted in addition to `states`.
 - `case_sensitive` defaults to `true`.
 
