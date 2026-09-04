@@ -38,7 +38,7 @@ Do not rename after every message, tool call, test, build, wait, or routine stat
 - `blocked` is a real non-user-input blocker; `paused` is intentional deferral.
 - `committing` and `pushing` are in-progress states. Use `committed` or `pushed` only after verifying the matching Git result.
 - A commit or push does not imply QA acceptance, CI, deployment, or delivery.
-- Use `done` only for completed non-repository work when no other gate remains.
+- Use `done` for completed work when a commit or publication is neither requested nor required and no acceptance or other action remains. This includes read-only repository audits and scoped local work; it does not claim a commit or push. Preserve the user's approved naming policy over these defaults.
 - A later relevant change returns a terminal Git or completion state to `work`.
 
 Read [references/status-model.md](references/status-model.md) before changing the recommended semantics or resolving an ambiguous transition.

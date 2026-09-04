@@ -37,7 +37,7 @@ If user acceptance is the active gate, `qa` remains the truthful visible state e
 
 ## Non-Git completion
 
-Use `done` only when Git does not belong to the outcome and no QA, feedback, approval, blocker, pause, or user action remains. Examples can include a completed Mail, calendar, research, or communication task.
+Use `done` when a commit or publication is neither requested nor required and no QA, feedback, approval, blocker, pause, or user action remains. Examples include completed Mail, calendar, research, communication, read-only repository audits, and scoped local work whose outcome does not require a commit. This state does not claim Git publication. An existing user-approved naming policy takes precedence over these defaults.
 
 ## Recurring automations
 
